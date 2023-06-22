@@ -1,0 +1,113 @@
+.footer-links-wrapper {
+    padding: 50px 10px;
+}
+
+.footer-links {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-links > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.footer-links > div > div > input {
+    display: none;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--ff-obviously);
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    font-size: 1.4rem;
+}
+
+.footer-links > div > div > input:checked ~ ul {
+    max-height: 1000px;
+}
+
+.footer-links ul > li {
+    text-indent: 15px;
+    padding: .5rem 0;
+}
+
+.footer-links ul > li:last-child {
+    margin-bottom: 15px;
+}
+
+.footer-links ul > li a {
+    color: var(--clr-brand-black);
+    text-decoration: none;
+}
+
+.footer-links ul > li a:hover,
+.footer-links ul > li a:focus {
+  text-decoration: underline;
+}
+
+.footer-links label {
+    display: flex;
+    cursor: pointer;
+}
+
+.footer-links h3 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-family: var(--ff-obviously);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-heading);
+    font-size: 1.6rem;
+}
+
+.footer-links label::after {
+    display: inline-block;
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+    background: url('../../icons/chevron-left.svg') right center;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+    transition: all 0.3s ease;
+}
+
+.footer-links input:checked ~ label::after {
+    transform: rotate(270deg);
+}
+
+@media (min-width: 768px) {
+    .footer-links ul {
+        max-height: unset;
+    }
+
+    .footer-links label {
+        cursor: default;
+    }
+
+    .footer-links > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 25px;
+    }
+
+    .footer-links label::after {
+        display: none;
+    }
+
+    .footer-links ul > li {
+        text-indent: 0;
+    }
+
+    .footer-links ul > li:last-child {
+        margin-bottom: 0;
+    }
+}

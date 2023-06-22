@@ -1,0 +1,404 @@
+/* stylelint-disable no-descending-specificity */
+
+.section.columns-container:has(.columns.large-image),
+.section.columns-container:has(.columns.two-images) {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.columns > div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* icons and links column block styles */
+
+.columns.icons-and-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.columns.icons-and-links > div {
+    display: grid;
+    grid-template-areas:
+        'icon icon'
+        'links additionallinks'
+}
+
+.columns.icons-and-links > div > div{
+    margin-left: 2rem;
+}
+
+.columns.icons-and-links > div:nth-child(odd) {
+    background-color: #f4f4f4;
+}
+
+.columns.icons-and-links > div > div:first-child{
+    grid-column: 1 / 3;
+}
+
+.columns.icons-and-links h4 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+.columns.icons-and-links a:any-link {
+    font-size: var(--body-font-size-s);
+    text-decoration: underline;
+}
+
+.columns.icons-and-links p {
+    margin: 1rem 0;
+}
+
+.columns.icons-and-links > div > div:first-of-type > p:first-of-type {
+    margin-bottom: 0;
+}
+
+.columns.icons-and-links img {
+    max-width: 4rem;
+}
+
+/* Center Shadow Style */
+
+.columns.center-shadow > div {
+    text-align: center;
+    height: 100%;
+    align-items: stretch;
+}
+
+.columns.center-shadow > div p {
+    margin: 0;
+    font-family: var(--ff-obviously);
+    font-weight: 400;
+    font-size: 2.2rem;
+}
+
+.columns.center-shadow > div > div > p:nth-child(3) {
+    margin-top: -15px;
+}
+
+.columns.center-shadow > div > div > p:first-of-type > picture > img {
+    box-shadow: -3px 3px 10px 0 #222;
+}
+
+/* Large Image Style */
+
+.columns.large-image > div {
+    height: 100%;
+    align-items: stretch;
+    text-align: center;
+    font-family: var(--ff-scotch-text);
+    font-weight: var(--fw-medium);
+    font-style: italic;
+    font-size: 1.6rem;
+    line-height: 2.0rem;
+}
+
+.columns.large-image h2 {
+    font-family: var(--ff-scotch-text);
+    font-weight: var(--fw-medium);
+    font-style: italic;
+    font-size: 4.5rem;
+    letter-spacing: -1px;
+    line-height: 3.5rem;
+    margin: 30px 0 10px;
+}
+
+.columns.large-image > div > div > picture > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.columns.large-image.columns-2-cols > div > div:first-child {
+    display: none;
+}
+
+/* Two Images Style */
+
+.columns.two-images, .columns.two-images > div {
+    text-align: center;
+    background: #f4e9e2;
+    font-family: var(--ff-scotch-text);
+    font-weight: var(--fw-medium);
+    font-style: italic;
+    font-size: 1.9rem;
+    line-height: 24.2px;
+}
+
+.columns.two-images > div {
+    height: 100%;
+}
+
+.columns.two-images > div > div > picture > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.columns.two-images h4 {
+    font-family: var(--heading-font-family);
+    font-size: 1.6rem;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+}
+
+.columns.two-images h2 {
+    font-family: var(--ff-scotch-display);
+    font-weight: var(--fw-medium);
+    font-style: italic;
+    font-size: 4.5rem;
+    letter-spacing: -1px;
+    line-height: 3.5rem;
+    margin: 15px 0 0;
+}
+
+.columns.two-images.columns-3-cols > div > div:first-child {
+    display: none;
+}
+
+/* Overlap Style */
+.section > .columns-wrapper:has(.overlap) {
+    max-width: 970px;
+}
+
+.columns.overlap {
+    text-align: center;
+}
+
+.columns.overlap > div > div:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.columns.overlap > div:first-child > div:first-child > div {
+    display: block;
+    background: #000;
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 1.4rem;
+    max-width: 100px;
+    margin: 0 0 0 -15%;
+}
+
+.columns.overlap > div > div p {
+    margin: 0;
+    font-family: var(--ff-obviously);
+    font-weight: var(--fw-medium);
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+}
+
+.columns.overlap > div:first-child > div > div h3 {
+    margin: 0 0 20px;
+    font-family: var(--ff-scotch-text);
+    font-weight: var(--fw-medium);
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+}
+
+.columns.overlap > div:first-child > div > div h4 {
+    margin: 0;
+    font-family: var(--ff-scotch-text);
+    font-weight: var(--fw-medium);
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+.columns.overlap > div > div:nth-child(2) a.button {
+    margin: 10px;
+    min-width: 210px;
+}
+
+.columns.overlap > div > div:nth-child(2) h2 {
+    font-family: var(--ff-scotch-text);
+    font-weight: var(--fw-medium);
+    font-style: italic;
+    font-size: 3.0rem;
+    margin: 0;
+}
+
+/* Colors Style */
+
+.columns.colors > div {
+    text-align: center;
+    font-family: var(--ff-scotch-text);
+    font-weight: var(--fw-normal);
+    font-style: italic;
+    font-size: 1.6rem;
+}
+
+.columns.colors > div > div {
+    margin: 30px 20px;
+}
+
+.columns.colors > div p {
+    padding: 0;
+    margin: 0;
+}
+
+.columns.colors > div p > picture {
+    text-align: left;
+}
+
+.columns.colors > div p > picture img {
+    margin-bottom: 20px;
+}
+
+.columns.colors .button.secondary:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+    color: #fff;
+}
+
+.columns.colors > div > div:nth-child(1) .button.secondary {
+    background: #e90e8b;
+    border: 0;
+}
+
+.columns.colors > div > div:nth-child(2) .button.secondary {
+    background: #9163cc;
+    border: 0;
+}
+
+.columns.colors > div > div:nth-child(3) .button.secondary {
+    background: #00a39e;
+    border: 0;
+}
+
+@media (min-width: 900px) {
+    .columns > div {
+        display: flex;
+        align-items: center;
+        flex-direction: unset;
+    }
+
+    .section > div.columns-wrapper {
+        max-width: var(--content-max-width);
+    }
+
+    .columns > div > div {
+        flex: 1;
+        margin-left: 32px;
+    }
+
+    .columns > div > div:first-of-type {
+        margin-left: unset;
+    }
+
+    /* Large Image Style */
+
+    .columns.large-image, .columns.large-image > div {
+        max-height: 656px;
+    }
+
+    .columns.large-image > div p {
+        font-size: 2.2rem;
+    }
+
+    .columns.large-image.columns-2-cols > div > div:first-child {
+        flex: 2;
+        display: block;
+    }
+
+    .columns.large-image.columns-2-cols > div > div:last-child img {
+        max-width: 455px;
+    }
+
+    .columns.large-image h2 {
+        margin: 30px 0;
+        font-size: 7.3rem;
+        line-height: 58.4px;
+    }
+
+    /* Two Images Style */
+
+    .columns.two-images, .columns.two-images > div {
+        max-height: 603px;
+    }
+
+    .columns.two-images > div p {
+        font-size: 2.2rem;
+    }
+
+    .columns.two-images h4 {
+        font-size: 2.2rem;
+        letter-spacing: 0.4rem;
+    }
+
+    .columns.two-images h2 {
+        font-size: 7.3rem;
+        line-height: 58.4px;
+        margin: 20px 0;
+    }
+
+    .columns.two-images.columns-3-cols > div > div:first-child {
+        display: block;
+        flex: 2;
+        align-self: stretch;
+    }
+
+    .columns.two-images.columns-3-cols > div > div:nth-child(2) {
+        flex: 3;
+    }
+
+    .columns.two-images.columns-3-cols > div > div:last-child {
+        flex: 5;
+        align-self: stretch;
+    }
+
+    /* Overlap Style */
+
+    .columns.overlap > div > div:first-child {
+        flex: 2;
+    }
+
+    .columns.overlap > div:first-child > div:first-child > div {
+        max-width: 185px;
+        padding: 20px;
+    }
+
+    .columns.overlap > div > div p {
+        font-size: 1.6rem;
+    }
+
+    .columns.overlap > div:first-child > div > div h3 {
+        font-size: 2.8rem;
+    }
+
+    .columns.overlap > div:first-child > div > div h4 {
+        font-size: 2.0rem;
+    }
+
+    .columns.icons-and-links > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr;
+        gap:1rem;
+        align-items: top;
+        flex-direction: unset;
+    }
+
+    .columns.icons-and-links > div > div {
+        margin-left:1.2rem;
+    }
+
+    .columns.icons-and-links > div > div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .columns.icons-and-links > div > div:nth-child(3) {
+        align-self: flex-start;
+        margin: 1rem 0;
+    }
+
+    .columns.icons-and-links > div > div:first-child{
+        grid-column: 1;
+    }
+}

@@ -1,0 +1,117 @@
+/* stylelint-disable no-descending-specificity */
+.search-recs {
+  position: fixed;
+  top: var(--nav-height);
+  right: 20px;
+  left: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 101;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.search-recs[hidden] {
+  display: none;
+}
+
+.search-recs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.search-recs ul li {
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+.search-recs .top-results {
+  display: none;
+  grid-area: top-results;
+  border-right: 1px solid #ccc;
+  padding: .4rem 1.6rem 1.6rem;
+}
+
+.search-recs .top-results ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: .5rem 0 0;
+}
+
+.search-recs .top-results ul img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #f8f8f8;
+  aspect-ratio: 163 / 207;
+}
+
+.search-recs .search-recs-title {
+  display: none;
+  font-weight: var(--fw-normal);
+  line-height: 1;
+  font-size: 1.8rem;
+}
+
+.search-recs .top-results ul a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.related-searches a,
+.categories a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+.search-recs .top-results ul a:hover,
+.search-recs .top-results ul a:focus,
+.related-searches a:hover,
+.categories a:hover,
+.related-searches a:focus,
+.categories a:focus {
+  text-decoration: underline;
+}
+
+@media (min-width: 600px) {
+  .search-recs {
+    top: 50px;
+    width: 90%;
+    left: unset;
+    max-width: 80rem;
+    min-height: 150px;
+    display: grid;
+    grid-template: 'top-results related-searches' auto 'top-results categories' 1fr / 2fr 1fr;
+    margin-left: 20px;
+    max-height: unset;
+    overflow-y: unset;
+  }
+
+  .search-recs .top-results {
+    display: initial;
+  }
+
+  .search-recs .search-recs-title {
+    display: initial;
+  }
+
+  .search-recs .related-searches {
+    grid-area: related-searches;
+    padding: .4rem 1.6rem 1.6rem;
+  }
+
+  .search-recs .categories {
+    grid-area: categories;
+    padding: .4rem 1.6rem 1.6rem;
+  }
+
+  .search-recs ul li {
+    padding: 0;
+    border: unset;
+  }
+}

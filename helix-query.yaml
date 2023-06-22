@@ -1,0 +1,49 @@
+version: 1
+indices:
+  sitemap:
+    target: /query-index.json
+    exclude:
+      - 'drafts/**'
+      - 'block-library/**'
+      - 'fragments/**'
+      - 'products/default'
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+      image:
+        select: head > meta[property="og:image"]
+        value: |
+          attribute(el, 'content')
+      description:
+        select: head > meta[name="description"]
+        value: |
+          attribute(el, 'content')
+      template:
+        select: head > meta[name="template"]
+        value: |
+          attribute(el, 'content')
+  blocks:
+    target: /block-library/query-index.json
+    include:
+      - '**/block-library/blocks/**'
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+  enrichment-fragments:
+    target: /fragments/enrichment-fragments.json
+    include:
+      - '**/fragments/drafts/**'
+      - '**/fragments/enrichments/**'
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+      products:
+        select: head > meta[name="associated-products"]
+        values: |
+          match(attribute(el, 'content'), '([^,]+)')

@@ -1,0 +1,297 @@
+img{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.block.bra-finder {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Titles */
+.block.bra-finder .fit-title h2 {
+  letter-spacing: .5rem;
+  color: #595a5c;
+  font-family: var(--ff-zahrah-regular);
+  font-weight: var(--fw-normal);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: clamp(2.4rem, 5vw, 6rem);
+  line-height: 1.1;
+}
+
+.block.bra-finder .fit-title em {
+  font-size: 180%;
+  font-family: var(--ff-zahrah-medium-italic);
+  color: var(--clr-brand-magenta-med);
+  text-transform: none;
+}
+
+/* Image overlay */
+.block.bra-finder .fit-image-overlay {
+  position: relative;
+  font-family: var(--ff-zahrah-semibold);
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child {
+  position: absolute;
+  width: clamp(30rem,50%,50%);
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child a {
+  background: #d9b391;
+  padding: 12px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0.5rem 0.5rem 1rem rgb(0 0 0 / 30%);
+  text-decoration: none;
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child p {
+  font-size: 2.2rem;
+  color: #414042;
+  margin: 0;
+  font-family: var(--ff-zahrah-medium-italic);
+  line-height: 1.4;
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child p u {
+  display: block;
+  text-decoration: none;
+  font-size: 200%;
+  line-height: 1;
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child p:last-child {
+  background: #ba885d;
+  color: var(--clr-white);
+  border-radius: 5rem;
+  margin: 2rem 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 200%;
+  padding: 1rem 2.5rem  1.05rem;
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child a:hover {
+  text-decoration: none;
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child a:hover p:last-child {
+  text-decoration: underline;
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child a h3 {
+  font-style: normal;
+  text-transform: uppercase;
+  font-family: var(--ff-zahrah-medium);
+  letter-spacing: .2em;
+  line-height: 1.1;
+  margin: 0 0 2rem;
+}
+
+.block.bra-finder .fit-image-overlay > div:first-child a h3 em {
+  color: var(--clr-white);
+  text-transform: none;
+  font-style: normal;
+  font-family: var(--ff-zahrah-medium-italic);
+  font-size: 170%;
+}
+
+.block.bra-finder .fit-image-overlay > div:last-child img {
+  min-height: 400px;
+  object-fit: cover;
+}
+
+/* Tabs */
+.block.bra-finder .fit-tabs {
+  font-family: var(--ff-zahrah-semibold);
+  color: #58595b;
+  text-align: center;
+}
+
+.block.bra-finder .fit-tabs ul[role='tablist'] {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 8rem 0 2rem;
+}
+
+.block.bra-finder .fit-tabs ul[role='tabpanel'] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.block.bra-finder .fit-tabs ul[role='tabpanel'] li {
+  flex: 1;
+  display: grid;
+  grid-template-areas: 'picture title' 'picture description';
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.block.bra-finder .fit-tabs ul[role='tabpanel'] li > picture {
+  grid-area: picture;
+}
+
+.block.bra-finder .fit-tabs ul[role='tablist'] > li {
+  border: 4px solid #fad1e0;
+  background: var(--clr-white);
+  padding: 15px;
+  transition: transform 200ms;
+  font-family: var(--ff-zahrah-medium-italic);
+  letter-spacing: .1em;
+  font-size: clamp(1.8rem,5vw,3rem);
+  text-transform: lowercase;
+}
+
+.block.bra-finder .fit-tabs ul[role='tablist'] > li[aria-selected='true'] {
+  transform: scale(120%);
+  border-color: #ea0c8e;
+}
+
+.block.bra-finder .fit-tabs ul[role='tabpanel'][hidden='true'] {
+  display: none;
+}
+
+/* Size calculator instructions */
+.block.bra-finder .fit-measure-steps {
+  font-family: var(--ff-zahrah-medium-italic);
+  color: #58595b;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.block.bra-finder .fit-measure-steps:not(.fit-image-overlay) p {
+  font-size: 2.4rem;
+  margin: 0 0 2rem;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.block.bra-finder .fit-measure-steps:not(.fit-image-overlay) p:first-of-type {
+  margin: 0;
+}
+
+.block.bra-finder .fit-measure-steps:not(.fit-image-overlay) > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.block.bra-finder .fit-measure-steps p strong {
+  font-family: var(--ff-zahrah-medium-italic);
+  color: black;
+}
+
+/* Fit finder tool */
+.block.bra-finder .fit-finder-tool {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.block.bra-finder .fit-finder-tool:not(.fit-image-overlay) form > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+}
+
+.block.bra-finder .fit-finder-tool:not(.fit-image-overlay) > div:first-child {
+  font-family: var(--ff-zahrah-medium-italic);
+  color: var(--clr-brand-magenta-med);
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.block.bra-finder .fit-finder-tool form select {
+  width: 210px;
+  border: 2px solid var(--clr-brand-magenta-med);
+  padding: 12px;
+  padding: 0 0 .3rem .5rem;
+}
+
+.block.bra-finder .fit-finder-tool .title-number {
+  color: var(--clr-brand-magenta-med);;
+  font-size: 5rem;
+}
+
+.block.bra-finder .fit-finder-tool button {
+  background: var(--clr-brand-magenta-med);
+  font-size: 2.2rem;
+  font-family: var(--ff-zahrah-semibold-italic);
+  text-transform: lowercase;
+  letter-spacing: .1em;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.bra-finder-container .default-content-wrapper p {
+  font-family: var(--ff-zahrah-medium);
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.bra-finder-container .default-content-wrapper p a {
+  text-decoration: none;
+  font-family: var(--ff-zahrah-medium-italic);
+  font-size: 140%;
+  color:var(--clr-brand-magenta-med);
+}
+
+@media (min-width: 800px) {
+  .block.bra-finder .fit-tabs ul[role='tabpanel'] {
+    flex-direction: row;
+  }
+
+  .block.bra-finder .fit-tabs ul[role='tabpanel'] li {
+    grid-template-areas: 'picture';
+  }
+
+  .block.bra-finder .fit-tabs ul[role='tablist'] > li img {
+    max-width: 150px;
+  }
+
+  .block.bra-finder .fit-tabs ul[role='tablist'] > li {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .block.bra-finder .fit-measure-steps {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .block.bra-finder .fit-finder-tool .fit-finder-selector > form {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .block.bra-finder .fit-image-overlay > div:first-child a {
+    padding: 40px;
+  }
+
+  .block.bra-finder .fit-image-overlay > div:first-child p {
+    font-size: 2.8rem;
+  }
+}

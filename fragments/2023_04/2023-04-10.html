@@ -1,0 +1,925 @@
+<style>
+    main .section {
+        padding: 0 !important;
+    }
+
+    main .section img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    main .section>div {
+        max-width: 100%;
+    }
+
+    .homepage-wrapper section {
+        margin: 0 auto 4rem;
+    }
+
+    main .section>div .homepage-wrapper p {
+        line-height: 1.3;
+        font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+        text-align: center;
+    }
+
+    main .section>div .homepage-wrapper p sup {
+      font-size: 60%;
+    }
+
+    /* buttons */
+    .homepage-wrapper [class^="btn"] {
+        font-family: var(--ff-zahrah-semibold-italic);
+        font-style: italic;
+        font-weight: var(--fw-normal);
+        letter-spacing: .05em;
+        border: 0.15rem solid;
+        border-radius: 5rem;
+        padding: 0 3rem .3rem;
+        font-size: 2rem;
+        line-height: 2;
+        min-width: 11rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: baseline;
+        margin: 1rem;
+        height: 4rem;
+        text-decoration: none;
+    }
+
+    .homepage-wrapper [class^="btn"]:hover,
+    .homepage-wrapper [class^="btn"]:focus {
+      text-decoration: underline;
+    }
+
+    .homepage-wrapper .btn-white {
+        background: #fff;
+        border-color: #000;
+    }
+
+    .homepage-wrapper .btn-black {
+        border-color: #000;
+        color: #fff;
+        background: #000;
+    }
+
+    /* slide show function ----------------------------------------------- */
+    .slide-show-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: max-content;
+    }
+
+    .slide-show {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: grid;
+        place-content: center;
+    }
+
+    .slide-show>* {
+        grid-area: 1/1;
+        position: relative;
+    }
+
+    @keyframes animate {
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        35% {
+            opacity: 1;
+        }
+
+        70% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .slide-show-wrapper input:checked~ul .slide {
+        opacity: 0;
+        animation: animate infinite 12s;
+    }
+
+    .slide-show-wrapper input:checked~ul .slide-one {
+        order: 1;
+    }
+
+    .slide-show-wrapper input:checked~ul .slide-two {
+        animation-delay: 4s;
+        order: 2;
+    }
+
+    .slide-show-wrapper input:checked~ul .slide-three {
+        animation-delay: 8s;
+        order: 3;
+    }
+
+    .slide-show-wrapper label {
+        position: absolute;
+        bottom: 2.5%;
+        left: 2%;
+        z-index: 100;
+        width: 4.4rem;
+        height: 4.4rem;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, .2);
+    }
+
+    .slide-show-wrapper label>span:after {
+        content: "";
+        display: block;
+        border: 0;
+        background: 0 0;
+        box-sizing: border-box;
+        width: 0;
+        height: 2.4rem;
+        border-color: transparent transparent transparent #fff;
+        transition: .1s all ease;
+        cursor: pointer;
+        border-style: double;
+        border-width: 0 0 0 1.8rem
+    }
+
+    .slide-show-wrapper label .play:after {
+        border-style: solid;
+        border-width: 1.2rem 0 1.2rem 2rem;
+    }
+
+    .slide-show-wrapper label .pause {
+        display: none;
+    }
+
+    .slide-show-wrapper input:checked~label .play {
+        display: none;
+    }
+
+    .slide-show-wrapper input:checked~label .pause {
+        display: block;
+    }
+
+    .slide-show-wrapper input {
+        opacity: 0;
+        bottom: 2%;
+        left: 2%;
+    }
+
+    .slide-show-wrapper input:focus-within~label {
+        outline: 2px solid #fff;
+    }
+
+    /* Quick links ---------------------------------------------------------*/
+    .mobile-quick-links {
+        margin: 0;
+        padding: 0 1rem;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        font-size: clamp(1.6rem, 5vw, 2rem);
+        height: 4.2rem;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .mobile-quick-links li {
+        display: flex;
+        align-items: center;
+        height: 4.2rem;
+    }
+
+    .mobile-quick-links a {
+        font-family: var(--ff-zahrah-bold-italic);
+        font-style: italic;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    /* hero ----------------------------------------------------------*/
+    @media (max-width: 599px) {
+        .mdf-hp-hero {
+            background: url('//franklin.maidenform.com/content-images/2023-04/04-10/media_17061c80efa3647b0033b708fb07a715b9dd0dc22.jpeg?trim=620,0,0,0') 0 85%/ 100% 53% no-repeat;
+        }
+    }
+
+    .mdf-hp-hero .copy-wrapper {
+        margin: 0 0 2rem;
+    }
+
+    .mdf-hp-hero h1 {
+        text-align: center;
+        margin: 1rem 0 0;
+        line-height: 0.9;
+        color: #fff;
+        font-size: 13vw;
+        filter: drop-shadow(0 0 4rem rgb(104, 9, 103)) drop-shadow(0 0 1rem rgba(104, 9, 103, .4));
+    }
+
+    .mdf-hp-hero .cta-wrapper {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0 1rem;
+    }
+
+    .mdf-hp-hero .pic2 {
+        width: 70%;
+        display: block;
+        margin-inline: auto;
+    }
+
+    .mdf-hp-hero .pic2 img {
+        border: 1.5rem solid #fff;
+        box-sizing: border-box;
+    }
+
+    @media (min-width: 600px) {
+        .mdf-hp-hero {
+            display: grid;
+            align-items: center;
+        }
+
+        .mdf-hp-hero>*:not(:last-child) {
+            grid-area: 1/1;
+        }
+
+        .mdf-hp-hero .copy-wrapper {
+            justify-content: end;
+            width: 50%;
+            margin-left: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mdf-hp-hero .copy-wrapper h1 {
+            order: 1;
+            font-size: clamp(3rem, 8vw, 8rem);
+            white-space: nowrap;
+            filter: drop-shadow(0 0 3rem rgb(64, 8, 63)) drop-shadow(0 0 3rem rgba(213, 93, 167, 0.6));
+        }
+
+        .mdf-hp-hero .copy-wrapper .cta-wrapper {
+            order: 3;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mdf-hp-hero .copy-wrapper p {
+            order: 2;
+            margin: 2rem 0 1rem;
+        }
+
+        .mdf-hp-hero .pic2 {
+            display: none;
+        }
+    }
+
+    @media (min-width: 840px) {
+        .mdf-hp-hero {
+            grid-template-columns: 85% auto;
+        }
+
+        .mdf-hp-hero .pic2 {
+            display: block;
+            grid-area: 1/2;
+            margin-left: -50%;
+            width: 140%;
+        }
+
+        .mdf-hp-hero .pic2 img {
+            border-width: 1.2rem;
+        }
+
+        .mdf-hp-hero .copy-wrapper {
+            width: 40%;
+            margin: -8% 12% 0 auto;
+        }
+    }
+
+    /* END hero */
+
+    /* bra panty set ---------------------------------------------*/
+    .mdf-hp-bra-panty-set {
+        display: grid;
+        align-items: center;
+        gap: 1rem 0;
+        grid-template-columns: 57% 43%;
+        text-align: center;
+        max-width: 140rem;
+
+    }
+
+    .mdf-hp-bra-panty-set .pic1 {
+        position: relative;
+        width: 80%;
+        grid-area: 1/1/1/span 2;
+    }
+
+    .mdf-hp-bra-panty-set .pic1:after {
+        content: '';
+        background: url('//franklin.maidenform.com/content-images/2023-04/04-10/new.svg') center/contain no-repeat;
+        display: block;
+        width: 35%;
+        aspect-ratio: 1.3/1;
+        position: absolute;
+        top: 10%;
+        right: 0;
+        translate: 55% 0;
+    }
+
+    .mdf-hp-bra-panty-set .copy-wrapper {
+        grid-area: 2/1/2/1;
+    }
+
+    .mdf-hp-bra-panty-set .pic2 {
+        grid-area: 2/2/2/2;
+    }
+
+    .mdf-hp-bra-panty-set h2 {
+        font-size: clamp(1.2rem, 9vw, 7rem);
+    }
+
+    @media (min-width: 600px) {
+        .mdf-hp-bra-panty-set .pic2 {
+            display: none;
+        }
+
+        .mdf-hp-bra-panty-set {
+            grid-template-columns: 50% 50%;
+            padding: 0 2rem;
+        }
+
+        .mdf-hp-bra-panty-set .pic1 {
+            grid-area: 1/1;
+            width: 90%;
+        }
+
+        .mdf-hp-bra-panty-set .copy-wrapper {
+            grid-area: 1/2;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .mdf-hp-bra-panty-set {
+            grid-template-columns: auto 35% 29%;
+            gap: 0 1.5rem;
+
+        }
+
+        .mdf-hp-bra-panty-set .pic1 {
+            grid-area: 1/2;
+            width: 100%;
+        }
+
+        .mdf-hp-bra-panty-set .pic2 {
+            display: block;
+            grid-area: 1/3;
+        }
+
+        .mdf-hp-bra-panty-set .copy-wrapper {
+            grid-area: 1/1;
+        }
+    }
+
+    /* END bra panty set */
+
+    /* Shop the Collections ------------------------------------------------------*/
+    .mdf-hp-collections {
+        text-align: center;
+        padding: 3rem 0 2rem 1.6rem;
+        background: #FFF0ED;
+    }
+
+    .mdf-hp-collections h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(1.2rem, 4.5vw, 3rem);
+        letter-spacing: 0.3em
+    }
+
+    .mdf-hp-collections ul {
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+        max-width: 120rem;
+    }
+
+    .mdf-hp-collections ul {
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+    }
+
+    .mdf-hp-collections ul li {
+        flex: 0 0 70%;
+        scroll-snap-align: start;
+    }
+
+    .mdf-hp-collections ul li:last-of-type {
+        scroll-snap-type: end;
+    }
+
+    .mdf-hp-collections .copy-wrapper {
+        margin: 1.6rem 0 0;
+    }
+
+    main .section>div .homepage-wrapper .mdf-hp-collections p {
+        font-size: clamp(1.2rem, 4.2vw, 2rem);
+    }
+
+    .mdf-hp-collections p span {
+        display: block;
+        letter-spacing: .25em;
+        line-height: 1;
+    }
+
+    .mdf-hp-collections p span sup {
+        font-size: 60%;
+    }
+
+    @media (min-width: 600px) {
+        .mdf-hp-collections ul {
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+        }
+
+        .mdf-hp-collections ul li {
+            flex: 0 0 60%;
+            scroll-snap-align: start;
+        }
+
+        .mdf-hp-collections ul li:last-of-type {
+            scroll-snap-type: end;
+        }
+    }
+
+    @media (min-width: 840px) {
+        .mdf-hp-collections {
+            padding: 2rem 1rem 3rem;
+        }
+
+        .mdf-hp-collections ul li {
+            flex: 0 0 40%;
+        }
+    }
+
+
+    @media (min-width: 1024px) {
+        .mdf-hp-collections ul li {
+            flex: 1 1 33%;
+        }
+
+        .mdf-hp-collections h2 {
+            margin: 0 0 3rem;
+        }
+
+        .mdf-hp-collections ul {
+            gap: 2rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .mdf-hp-collections ul {
+            gap: 5rem;
+        }
+    }
+
+    /* END Shop the Collections */
+
+    /* Boyshorts --------------------------------------------------------------- */
+    .mdf-hp-boyshorts {
+        position: relative;
+        padding: 0 1.6rem;
+        text-align: center;
+        max-width: 120rem;
+    }
+
+    .mdf-hp-boyshorts .pic2 {
+        display: none;
+    }
+
+    .mdf-hp-boyshorts .copy-wrapper {
+        margin: 1rem 0 0;
+    }
+
+    .mdf-hp-boyshorts .copy-wrapper h2 {
+        font-family: 'Zahrah Semibold Italic', serif;
+        font-style: italic;
+        position: absolute;
+        line-height: .9;
+        left: 50%;
+        top: 28%;
+        translate: -50% -50%;
+        color: #fff;
+        font-size: clamp(1.8rem, 13vw, 6rem);
+        text-shadow: 0 0 .25rem rgba(0, 0, 0, .5), 0 0 1.5rem rgba(0, 0, 0, .5);
+        filter: drop-shadow(0 0 1rem rgba(0, 0, 0, .5)) drop-shadow(0 0 2rem rgba(0, 0, 0, .5))
+    }
+
+    @media (min-width: 600px) {
+        .mdf-hp-boyshorts {
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        .mdf-hp-boyshorts .copy-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            padding: 0 2rem;
+            margin: 0;
+        }
+
+        .mdf-hp-boyshorts .copy-wrapper h2 {
+            position: relative;
+            translate: 0 0;
+            left: unset;
+            top: unset;
+            color: #886A9F;
+            text-shadow: none;
+            filter: none;
+            font-family: 'Zahrah Medium Italic', Serif;
+            margin: 0 0 2rem;
+        }
+    }
+
+    @media (min-width: 800px) {
+        .mdf-hp-boyshorts .pic2 {
+            display: block;
+        }
+    }
+
+    /* END Boyshorts */
+
+    /* Quick Change Bra ------------------------------------------------------*/
+    .mdf-hp-quick-change-bra .inner-wrapper {
+        position: relative;
+        text-align: center;
+        padding: 3rem 0 2rem;
+        background: linear-gradient(to bottom, #FFF0ED 0%, #FFF0ED 90%, #fff 90%);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mdf-hp-quick-change-bra .inner-wrapper:after {
+        content: '';
+        display: block;
+        position: absolute;
+        background: url('//franklin.maidenform.com/content-images/2023-04/04-10/perfectspring.svg') center/contain no-repeat;
+        aspect-ratio: 1/1;
+        width: 40%;
+        top: 90%;
+        left: 43%;
+        translate: -50% -50%;
+    }
+
+    .mdf-hp-quick-change-bra h2 {
+        grid-area: 1/1/1/span 2;
+        line-height: .9;
+        margin: 0 0 2rem;
+        color: #ED419B;
+        font-size: clamp(1.6rem, 12vw, 5rem);
+    }
+
+    .mdf-hp-quick-change-bra .pic-slideshow {
+        grid-area: 2/1/2/span 2;
+        width: 80%;
+        margin-inline: auto;
+        z-index: 5;
+    }
+
+    .mdf-hp-quick-change-bra .slide-show-wrapper {
+        box-sizing: border-box;
+        border: 1rem solid #fff;
+    }
+
+    .mdf-hp-quick-change-bra .copy-wrapper {
+        grid-area: 3/1/3/1;
+        padding: 2rem 1rem;
+    }
+
+    .mdf-hp-quick-change-bra .pic1 {
+        grid-area: 3/2/3/2;
+        margin: -25% 0 0;
+    }
+
+    @media (min-width: 600px) {
+        .mdf-hp-quick-change-bra .inner-wrapper {
+            background: linear-gradient(to bottom, #FFF0ED 0%, #FFF0ED 89%, #fff 89%);
+        }
+
+        .mdf-hp-quick-change-bra .pic1 {
+            display: none;
+        }
+
+        .mdf-hp-quick-change-bra h2 {
+            grid-area: 1/1;
+            justify-content: center;
+            display: flex;
+            align-items: end;
+        }
+
+        .mdf-hp-quick-change-bra .copy-wrapper {
+            grid-area: 2/1;
+            padding: 0;
+        }
+
+        .mdf-hp-quick-change-bra .pic-slideshow {
+            grid-area: 1/2/span 2/2;
+        }
+
+        .mdf-hp-quick-change-bra .inner-wrapper:after {
+            width: 19%;
+            top: 58%;
+            left: 53%;
+            z-index: 20;
+        }
+    }
+
+    @media (min-width: 800px) {
+        .mdf-hp-quick-change-bra {
+            background: linear-gradient(to bottom, #FFF0ED 0%, #FFF0ED 84%, #fff 84%);
+        }
+
+        .mdf-hp-quick-change-bra .inner-wrapper {
+            background: none;
+            grid-template-columns: 35% auto 40%;
+            max-width: 120rem;
+            margin-inline: auto;
+        }
+
+        .mdf-hp-quick-change-bra .pic1 {
+            display: block;
+            grid-area: 1/2/ span 2/2;
+            margin: 0;
+        }
+
+        .mdf-hp-quick-change-bra .pic-slideshow {
+            grid-area: 1/3/span 2/3;
+            margin: 15% 0 0 -4%;
+        }
+
+        .mdf-hp-quick-change-bra .slide-show-wrapper {
+            border-width: 1.5rem;
+        }
+
+        .mdf-hp-quick-change-bra .slide-show-wrapper label,
+        .mdf-hp-quick-change-bra .slide-show-wrapper input {
+            left: unset;
+            right: 2%;
+        }
+
+        .mdf-hp-quick-change-bra .inner-wrapper::after {
+            width: 13%;
+            top: 81%;
+            left: 57%;
+        }
+    }
+</style>
+
+<div class="homepage-wrapper">
+    <!-- Top Banner -->
+    <div>
+        <ul class="mobile-quick-links mobile-only" style="background: #FFE8E3;">
+            <li><a href="/bras.html">Bras</a></li>
+            <li>|</li>
+            <li><a href="/shapewear.html">Shapewear</a></li>
+            <li>|</li>
+            <li><a href="/clearance.html">Clearance</a></li>
+        </ul>
+    </div>
+    <!-- END Top Banner -->
+
+    <!-- Hero -->
+    <section class="mdf-hp-hero">
+        <div class="pic1">
+            <picture>
+                <source media="(min-width: 600px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_1ee26836a941794c8d8c47ddbc4ae93b1831d0817.jpeg?trim=0,410,0,0&optimize=high&auto=webp"
+                    width="1510" height="920">
+                <source media="(max-width: 599px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_1d7ca8e033d51b7f57e06b6a6cc18eb263a548ff8.jpeg?optimize=high&auto=webp"
+                    width="480" height="622">
+                <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_1d7ca8e033d51b7f57e06b6a6cc18eb263a548ff8.jpeg?optimize=high&auto=webp"
+                    alt="" width="480" height="622">
+            </picture>
+        </div>
+        <div class="copy-wrapper">
+            <h1 class="zahrah-semibold-italic">stride into <br>spring</h1>
+            <div class="cta-wrapper">
+                <a class="btn-white" href="/everyday-modern-demi-underwire-bra.html"
+                    aria-label="One Fab Fit® Everyday Modern Demi Underwire Bra">shop bra</a>
+                <a class="btn-white" href="/shaping-brief-with-cool-comfort-reg.html"
+                    aria-label="Tame Your Tummy Shapewear Brief">shop shape</a>
+            </div>
+            <p>Flaunt your femme side feeling<br class="large-only"> cool,<br class="mobile-only"> confident &
+                comfortable
+                with<br class="large-only"> our<br class="mobile-only"> Everyday Modern Demi and<br class="large-only">
+                Cool<br class="mobile-only"> Comfort<sup>®</sup> shaping brief.</p>
+        </div>
+        <div class="pic2">
+            <picture>
+                <source media="(min-width:600px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_123af73c381b14ab1bee8d0597c2a0749b48fb4c6.jpeg?optimize=high&auto=webp"
+                    width="430" height="589">
+                <source media="(max-width:599px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_10398aeebb51c86b8f4a6ee16c825e0c1e1b567da.jpeg?optimize=high&auto=webp"
+                    width="290" height="398">
+                <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_10398aeebb51c86b8f4a6ee16c825e0c1e1b567da.jpeg?optimize=high&auto=webp"
+                    alt="" width="290" height="398">
+            </picture>
+        </div>
+    </section>
+    <!-- END Hero -->
+
+    <!-- bra and panty set -->
+    <section class="mdf-hp-bra-panty-set">
+        <div class="pic1">
+            <picture>
+                <source media="(min-width:600px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_1e2fbe74afb5e3f291dbeac05bbaae8d300aa3855.jpeg?optimize=high&auto=webp"
+                    width="615" height="735">
+                <source media="(max-width:599px)" width="423" height="516"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_1b68abfecd176356b61a21c70b105105cfc39e193.jpeg?optimize=high&auto=webp&trim=0,0,0,15">
+                <img loading="lazy"
+                    src="//franklin.maidenform.com/content-images/2023-04/04-10/media_1b68abfecd176356b61a21c70b105105cfc39e193.jpeg?optimize=high&auto=webp&trim=0,0,0,15"
+                    alt="" width="423" height="516">
+            </picture>
+        </div>
+        <div class="copy-wrapper">
+            <h2 class="zahrah-medium-italic" style="color:#886A9F;margin: 0 0 2rem;line-height: 0.9;">new prints<br> in
+                bloom
+            </h2>
+            <p>Soft as fresh<br class="mobile-only"> flower petals,<br class="large-only"> this<br class="mobile-only">
+                comfy
+                set brings<br> the joy of spring!</p>
+            <div class="cta-wrapper">
+                <a class="btn-white" href="/comfy-soft-full-coverage-underwire-bra.html"
+                    aria-label="Comfy Soft Full Coverage Underwire Bra">shop bra</a>
+                <a class="btn-white" href="/lace-back-tanga.html" aria-label="Lace Back Tanga">shop panty</a>
+            </div>
+        </div>
+        <div class="pic2">
+            <picture>
+                <source media="(min-width:600px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_172a9cab0a4631693f6a95889af6554d2218ff613.jpeg?optimize=high&auto=webp"
+                    width="505" height="735">
+                <source media="(max-width:599px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_15d2406df2180485b39ec6726963084af74e0807e.jpeg?optimize=high&auto=webp&trim=0,100,0,0"
+                    width="313" height="393">
+                <img loading="lazy"
+                    src="//franklin.maidenform.com/content-images/2023-04/04-10/media_15d2406df2180485b39ec6726963084af74e0807e.jpeg?optimize=high&auto=webp&trim=0,100,0,0"
+                    alt="" width="313" height="393">
+            </picture>
+        </div>
+    </section>
+    <!-- END bra and panty set -->
+
+    <!-- Shop the Collections -->
+    <section class="mdf-hp-collections">
+        <h2 class="gilroy-xbold">SHOP THE COLLECTIONS</h2>
+        <ul>
+            <li>
+                <a href="/everyday-modern-demi-underwire-bra.html?color=31242">
+                    <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_1e980dfed5d1ab5307b064743df2b1bacac3fb606.jpeg?optimize=high&auto=webp"
+                        alt="One Fab Fit® Everyday Modern Demi Underwire Bra" width="515" height="585" loading="lazy">
+                </a>
+                <div class="copy-wrapper">
+                    <p class="zahrah-bold-italic"><span class="gilroy-xbold">ONE FAB FIT<sup>®</sup></span>
+                        One Flawless Fit. One Favorite Fit.</p>
+                    <a href="/collections/one-fabulous-fit-collection.html" class="btn-black"
+                        aria-label="One Fabulous Fit Collection">shop now</a>
+                </div>
+            </li>
+            <li>
+                <a href="/dm7685.html">
+                    <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_12ab9ff601cbab123b0f2a177c0eee4dfc2d16299.jpeg?optimize=high&auto=webp"
+                        alt="Tame Your Tummy Shapewear Brief" width="515" height="585" loading="lazy">
+                </a>
+                <div class="copy-wrapper">
+                    <p class="zahrah-bold-italic"><span class="gilroy-xbold">PURE COMFORT<sup>®</sup></span>
+                        Soft Comfort to Show Off</p>
+                    <a href="/collections/comfort-essentials-collections.html" class="btn-black"
+                        aria-label="Pure Comfort Collection">shop now</a>
+                </div>
+            </li>
+            <li>
+                <a href="/shaping-brief-with-cool-comfort-reg.html">
+                    <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_1faad0fe65209918a294e67006c397260be6d5620.jpeg?optimize=high&auto=webp"
+                        alt="Tame Your Tummy Shapewear Brief" width="515" height="585" loading="lazy">
+                </a>
+                <div class="copy-wrapper">
+                    <p class="zahrah-bold-italic"><span class="gilroy-xbold">TAME YOUR TUMMY</span>
+                        Get Everyday Targeted Shaping</p>
+                    <a href="/collections/tame-your-tummy.html " class="btn-black" aria-label="Tame Your Tummy">shop
+                        now</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <!-- END Shop the Collections -->
+
+    <!-- Boyshorts -->
+    <section class="mdf-hp-boyshorts">
+        <div class="pic1">
+            <picture>
+                <source media="(min-width:600px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_1ddcff1a3d34f2bb8f8b8d7570ee3613fc5a152b1.jpeg?optimize=high&auto=webp"
+                    width="621" height="736">
+                <source media="(max-width:599px)"
+                    srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_179f7daaa0472a0c632d117db8d6f2639341057a7.jpeg?optimize=high&auto=webp"
+                    width="422" height="545">
+                <img loading="lazy"
+                    src="//franklin.maidenform.com/content-images/2023-04/04-10/media_179f7daaa0472a0c632d117db8d6f2639341057a7.jpeg?optimize=high&auto=webp"
+                    alt="" width="422" height="545">
+            </picture>
+        </div>
+        <div class="pic2">
+            <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_175a66cdbd9a90b9ddd71b2918345f11cbcbdc04b.jpeg?optimize=high&auto=webp"
+                alt="" width="502" height="736" loading="lazy">
+        </div>
+        <div class="copy-wrapper">
+            <h2>crush on<br>boyshorts</h2>
+            <p>Collect all the colors of<br> our fan favorite panties</p>
+            <a href="/microfiber-boyshort-with-lace.html" class="btn-white"
+                aria-label="One Fab Fit® Microfiber Boyshort with Lace">shop panty</a>
+        </div>
+    </section>
+    <!-- END Boyshorts -->
+
+    <!-- quick change bra -->
+    <section class="mdf-hp-quick-change-bra">
+        <div class="inner-wrapper">
+            <h2 class="zahrah-medium-italic">quick change<br> artist</h2>
+            <div class="pic-slideshow">
+                <div class="slide-show-wrapper">
+                    <input type="checkbox" id="fade-animate" checked class="sr-only">
+                    <label for="fade-animate">
+                        <span class="play"><span class="sr-only">play image slide show</span></span>
+                        <span class="pause"><span class="sr-only">pause image slideshow</span></span>
+                    </label>
+                    <ul class="slide-show" aria-describedby="slideShow">
+                        <li class="slide slide-one">
+                            <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_18de705bbae4b7dc70cee3a0ffb8605a48c679853.jpeg?optimize=high&auto=webp&trim=23"
+                                loading="lazy" alt="" width="530" height="593" loading="lazy">
+                        </li>
+                        <li class="slide slide-two">
+                            <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_15a572f95c6bee11702b4a0c3076f5f3e242625aa.jpeg?optimize=high&auto=webp&trim=23"
+                                loading="lazy" alt="" width="530" height="593" loading="lazy">
+                        </li>
+                        <li class="slide slide-three">
+                            <img src="//franklin.maidenform.com/content-images/2023-04/04-10/media_19308e5cbd3a3efdda04cc31fa5e2f4ceaa35d0cc.jpeg?optimize=high&auto=webp&trim=23"
+                                loading="lazy" alt="" width="530" height="593" loading="lazy">
+                        </li>
+                    </ul>
+                    <div id="slideShow" class="sr-only">Three images of the DreamWire® Multiway Strapless Underwire Bra
+                        showing a
+                        few
+                        of the six different ways it can be worn: strapless, straight, crisscross, halter, one-shoulder,
+                        or combo.
+                    </div>
+                </div>
+            </div>
+            <div class="copy-wrapper">
+                <p>Break out all your<br class="mobile-only"> cute<br class="large-only"> spring tops<br
+                        class="mobile-only">
+                    and
+                    dresses…<br> this multi-way bra<br> is one and done <span class="sr-only">perfect for spring</span>
+                </p>
+                <a href="/dm2310.html" class="btn-white" aria-label="DreamWire® Multiway Strapless Underwire Bra">shop
+                    bra</a>
+            </div>
+            <div class="pic1">
+                <picture>
+                    <source media="(min-width:600px)"
+                        srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_12484d3eb9794f6571982724932f20178696d95cb.jpeg?optimize=high&auto=webp"
+                        width="621" height="736">
+                    <source media="(max-width:599px)"
+                        srcset="//franklin.maidenform.com/content-images/2023-04/04-10/media_10a0a2cf25d37e0cdf023b8f48de3dc0290585f05.jpeg?optimize=high&auto=webp"
+                        width="422" height="545">
+                    <img loading="lazy"
+                        src="//franklin.maidenform.com/content-images/2023-04/04-10/media_10a0a2cf25d37e0cdf023b8f48de3dc0290585f05.jpeg?optimize=high&auto=webp"
+                        alt="" width="422" height="545">
+                </picture>
+            </div>
+        </div>
+    </section>
+    <!-- END quick change bra -->
+</div><!-- END homepage wrapper -->

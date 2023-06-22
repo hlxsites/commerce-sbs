@@ -1,0 +1,92 @@
+.scroll-snap-carousel {
+  position: relative;
+}
+
+.scroll-snap-carousel .scroll-content {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  margin-inline: auto;
+}
+
+.scroll-snap-carousel .scroll-content>* {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+.scroll-snap-carousel .scroll-content .scroll-item {
+  box-sizing: border-box;
+  padding: 4rem;
+}
+
+.scroll-snap-carousel .scroll-content .scroll-item>*,
+.scroll-snap-carousel .scroll-content .scroll-item>*>* {
+  margin: 0;
+  width: 100%;
+}
+
+.scroll-snap-carousel .scroll-controls button {
+  position: absolute;
+  z-index: 20;
+  top: 38%;
+  height: 4.4rem;
+  width: 4.4rem;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-snap-carousel .scroll-controls button:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: .8rem solid transparent;
+  border-bottom: .8rem solid transparent;
+}
+
+.scroll-snap-carousel .scroll-controls button.next {
+  right: 0;
+}
+
+.scroll-snap-carousel .scroll-controls button.next:after {
+  border-left: 1.6rem solid var(--clr-brand-magenta);
+}
+
+.scroll-snap-carousel .scroll-controls button.prev {
+  left: 0;
+}
+
+.scroll-snap-carousel .scroll-controls button.prev:after {
+  border-right: 1.6rem solid var(--clr-brand-magenta);
+}
+
+@media (min-width:600px) {
+  .scroll-snap-carousel .scroll-content {
+    /* width: calc(100% - 8rem); */
+    padding-left: 4rem;
+  }
+
+  .scroll-snap-carousel .scroll-content .scroll-item {
+    padding: 4rem 4rem 4rem 0;
+  }
+}
+
+@media (min-width:1024px) {
+  .scroll-snap-carousel .scroll-content {
+    padding: 0;
+    overflow: unset;
+  }
+
+  .scroll-snap-carousel .scroll-controls {
+    display: none;
+  }
+
+  .scroll-snap-carousel .scroll-content .scroll-item {
+    padding: 1rem;
+  }
+}

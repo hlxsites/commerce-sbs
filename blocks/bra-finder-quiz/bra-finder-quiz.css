@@ -1,0 +1,131 @@
+.bra-finder-quiz {
+  text-align: center;
+  color: #58595b;
+  font-family: var(--ff-zahrah-regular);
+}
+
+.bra-finder-quiz ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-family: var(--ff-zahrah-medium-italic);
+}
+
+.bra-finder-quiz h1 {
+  letter-spacing: .5rem;
+  color: #595a5c;
+  font-family: var(--ff-zahrah-regular);
+  font-weight: var(--fw-normal);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: clamp(2.4rem, 5vw, 6rem);
+  line-height: 1.1;
+}
+
+.bra-finder-quiz h1 em {
+  font-size: 180%;
+  font-family: var(--ff-zahrah-medium-italic);
+  color: var(--clr-brand-magenta-med);
+  text-transform: none;
+}
+
+.bra-finder-quiz .question>div>p {
+  font-family: var(--ff-obviously);
+}
+
+.bra-finder-quiz .question h3 {
+  font-family: var(--ff-zahrah-medium-italic);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.bra-finder-quiz .question h4 {
+  color: var(--clr-brand-magenta-med);
+  font-family: var(--ff-zahrah-regular);
+}
+
+.bra-finder-quiz ul li:hover {
+  border-color: var(--clr-brand-magenta-med);
+  cursor: pointer;
+}
+
+.bra-finder-quiz *:is(.question.q2, .question.q3, .question.q4) ul {
+  gap: 0;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.bra-finder-quiz .question.q4 ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.bra-finder-quiz *:is(.question.q2, .question.q3, .question.q4) ul li {
+  flex: 1;
+  border: 4px solid var(--clr-brand-magenta-med);
+  transition: transform 200ms;
+  background: white;
+  padding: 20px;
+}
+
+.bra-finder-quiz *:is(.question.q2, .question.q3, .question.q4) ul li[aria-selected="true"] {
+  border-color: var(--clr-brand-magenta-med);
+  transform: scale(105%);
+}
+
+.bra-finder-quiz *:is(.question.q2, .question.q3, .question.q4) li img {
+  display: block;
+  margin: auto;
+  max-width: 166px;
+}
+
+.bra-finder-quiz .question.q1 ul li {
+  border: 2px solid var(--clr-brand-magenta-med);
+  width: 40px;
+  height: 40px;
+  font-size: 1.4rem;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bra-finder-quiz .question.q1 ul li:hover {
+  border-color: #c41b53;
+}
+
+.bra-finder-quiz .question.q1 ul li[aria-selected='true'] {
+  color: white;
+  background: var(--clr-brand-magenta-med);
+  border-color: var(--clr-brand-magenta-med);
+}
+
+.bra-finder-quiz button {
+  background: var(--clr-brand-magenta-med);
+  font-size: 2.2rem;
+  font-family: var(--ff-zahrah-semibold-italic);
+  text-transform: lowercase;
+  letter-spacing: .1em;
+}
+
+.bra-finder-quiz button[name="next"] {
+  margin: 0 0 0 3rem;
+}
+
+.bra-finder-quiz button:disabled {
+  background: var(--clr-dark-grey);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .bra-finder-quiz .question.q4 ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

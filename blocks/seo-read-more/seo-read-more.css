@@ -1,0 +1,57 @@
+.seo-read-more-wrapper h2 {
+  font-family: var(--heading-font-family);
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: .2rem;
+}
+
+.seo-read-more-wrapper h3 {
+  font-family: var(--heading-font-family);
+  font-weight: var(--fw-normal);
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: .2rem;
+}
+
+.seo-read-more-wrapper h4,
+.seo-read-more-wrapper h5,
+.seo-read-more-wrapper h6 {
+  font-family: var(--heading-font-family);
+  font-weight: var(--fw-normal);
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: .2rem;
+}
+
+.seo-read-more-wrapper p a {
+  text-decoration: underline;
+}
+
+.seo-read-more-wrapper sup {
+  font-size: 55%;
+}
+
+.seo-read-more.block>div+div {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .3s ease-in;
+}
+
+.seo-read-more.block>div+div.visible {
+  max-height: 500rem;
+  transition: max-height 1s ease-in-out;
+}
+
+.seo-read-more.block {
+  position: relative;
+}
+
+.seo-read-more.block button {
+  position: absolute;
+  bottom: 1rem;
+  right: 0;
+  background: none;
+  color: var(--clr-brand-black);
+  padding: 0;
+  margin: 0;
+}
