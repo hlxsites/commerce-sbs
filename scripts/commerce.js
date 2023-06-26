@@ -373,7 +373,7 @@ export async function performCatalogServiceQuery(query, variables) {
     'x-api-key': 'maidenform-franklin',
   };
 
-  const apiCall = new URL('https://franklin.maidenform.com/cs-graphql-sandbox');
+  const apiCall = new URL('https://catalog-service-sandbox.adobe.io/graphql');
   apiCall.searchParams.append('query', query.replace(/(?:\r\n|\r|\n|\t|[\s]{4})/g, ' ').replace(/\s\s+/g, ' '));
   apiCall.searchParams.append('variables', variables ? JSON.stringify(variables) : null);
 
@@ -399,7 +399,7 @@ export async function performMonolithGraphQLQuery(query, variables, GET = true) 
 
   let response;
   if (!GET) {
-    response = await fetch('https://franklin.maidenform.com/graphql', {
+    response = await fetch('https://www.marbec.click/graphql-maidenform', {
       method: 'POST',
       headers,
       body: JSON.stringify({
@@ -413,7 +413,7 @@ export async function performMonolithGraphQLQuery(query, variables, GET = true) 
       variables: JSON.stringify(variables),
     });
     response = await fetch(
-      `https://franklin.maidenform.com/graphql?${params.toString()}`,
+      `https://www.marbec.click/graphql-maidenform?${params.toString()}`,
       { headers },
     );
   }
