@@ -364,13 +364,13 @@ export async function getProductRatings(productSkus) {
 
 export async function performCatalogServiceQuery(query, variables) {
   const headers = {
-    'Content-Type': 'application/json',
-    'Magento-Environment-Id': '271c8746-f2ed-43c3-8159-e7b7bbe79aac',
-    'Magento-Website-Code': 'maidenform',
-    'Magento-Store-View-Code': 'maidenform_store_view',
-    'Magento-Store-Code': 'maidenform_store',
-    'Magento-Customer-Group': '77de68daecd823babbb58edb1c8e14d7106e83bb',
-    'x-api-key': 'maidenform-franklin',
+    "Content-Type": "application/json",
+    "Magento-Environment-Id": "cc7f8005-17dd-417b-b5bc-260d3014d2d5",
+    "Magento-Website-Code": "base",
+    "Magento-Store-View-Code": "default",
+    "Magento-Store-Code": "main_website_store",
+    "Magento-Customer-Group": "77de68daecd823babbb58edb1c8e14d7106e83bb",
+    "x-api-key": "06d3ba9d8c094e0bb54676c43bf5080f",
   };
 
   const apiCall = new URL('https://catalog-service-sandbox.adobe.io/graphql');
