@@ -1,9 +1,9 @@
-import fs from 'fs';
-import https from 'https';
-import getAllProducts from './queries/products.graphql.js';
+import fs from "fs";
+import https from "https";
+import getAllProducts from "./queries/products.graphql.js";
 
-const endpoint = 'https://franklin.maidenform.com/graphql';
-const imageFolder = './product-images';
+const endpoint = "https://franklin.maidenform.com/graphql";
+const imageFolder = "./product-images";
 
 /**
  * Get products by page number
@@ -11,14 +11,17 @@ const imageFolder = './product-images';
  */
 const getProducts = async (pageNumber) => {
   const api = new URL(endpoint);
-  api.searchParams.append('query', getAllProducts);
-  api.searchParams.append('variables', JSON.stringify({ currentPage: pageNumber }));
+  api.searchParams.append("query", getAllProducts);
+  api.searchParams.append(
+    "variables",
+    JSON.stringify({ currentPage: pageNumber })
+  );
 
   const response = await fetch(api, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      store: 'maidenform_store_view',
+      "Content-Type": "application/json",
+      store: "default",
     },
   });
   const result = await response.json();
@@ -41,54 +44,61 @@ const getProducts = async (pageNumber) => {
  * @param {String} url Url that should be downloaded
  * @param {String} fileName Path where file should be stored
  */
-const downloadFile = async (url, fileName) => new Promise((resolve, reject) => {
-  https.get(url, (response) => {
-    const code = response.statusCode ?? 0;
+const downloadFile = async (url, fileName) =>
+  new Promise((resolve, reject) => {
+    https
+      .get(url, (response) => {
+        const code = response.statusCode ?? 0;
 
-    if (code >= 400) {
-      return reject(new Error(response.statusMessage));
-    }
+        if (code >= 400) {
+          return reject(new Error(response.statusMessage));
+        }
 
-    if (code > 300 && code < 400 && !!response.headers.location) {
-      return resolve(downloadFile(response.headers.location, fileName));
-    }
+        if (code > 300 && code < 400 && !!response.headers.location) {
+          return resolve(downloadFile(response.headers.location, fileName));
+        }
 
-    const fileWriter = fs
-      .createWriteStream(fileName)
-      .on('finish', () => {
-        resolve({});
+        const fileWriter = fs.createWriteStream(fileName).on("finish", () => {
+          resolve({});
+        });
+
+        response.pipe(fileWriter);
+
+        return null;
+      })
+      .on("error", (error) => {
+        reject(error);
       });
-
-    response.pipe(fileWriter);
-
-    return null;
-  }).on('error', (error) => {
-    reject(error);
   });
-});
 
 (async () => {
   const products = await getProducts(1);
 
   const imagePaths = products.map((product) => {
     // Look for color option
-    const colorOption = product.configurable_options.find((option) => option.attribute_code === 'color');
+    const colorOption = product.configurable_options.find(
+      (option) => option.attribute_code === "color"
+    );
 
     // Sort colors alphabetically to ensure the same color is always selected as base image
-    const values = colorOption.values.sort((a, b) => a.label.localeCompare(b.label));
+    const values = colorOption.values.sort((a, b) =>
+      a.label.localeCompare(b.label)
+    );
 
     // Get first color
     const color = values[0].label;
     console.log(`Select color ${color} as base color for ${product.sku}`);
 
     // Get first variant that matches color
-    const variant = product.variants.find(
-      (v) => v.attributes.find((attribute) => attribute.code === 'color' && attribute.label === color),
+    const variant = product.variants.find((v) =>
+      v.attributes.find(
+        (attribute) => attribute.code === "color" && attribute.label === color
+      )
     );
 
     // Clean url
     const imageUrl = new URL(variant.product.image.url);
-    imageUrl.search = '';
+    imageUrl.search = "";
 
     return { sku: product.sku, image: imageUrl.toString() };
   });
@@ -102,11 +112,11 @@ const downloadFile = async (url, fileName) => new Promise((resolve, reject) => {
   await Promise.all(
     imagePaths.map(async ({ sku, image }) => {
       // Get extension from filename
-      const filename = image.split('/').pop();
-      const extension = filename.split('.').pop();
+      const filename = image.split("/").pop();
+      const extension = filename.split(".").pop();
 
       await downloadFile(image, `${imageFolder}/${sku}.${extension}`);
       console.log(`Downloaded ${image} for ${sku}`);
-    }),
+    })
   );
 })();
