@@ -316,7 +316,10 @@ export function getSwatchImageUrl(sku, color) {
   // Remove and non-alphanumeric characters
   const colorString = color.replace(/[^a-zA-Z0-9]/g, "");
 
-  return `https://franklin.maidenform.com/images/swatches/HNS_${sku}/HNS_${sku}_${colorString}_sw.jpg`;
+  return new URL(
+    `/images/swatches/HNS_${sku}/HNS_${sku}_${colorString}_sw.jpg`,
+    document.baseURI
+  ).toString();
 }
 
 export function renderFallbackImage(event, fallback = PLACEHOLDER_IMG) {
@@ -412,7 +415,7 @@ export async function performMonolithGraphQLQuery(
 ) {
   const headers = {
     "Content-Type": "application/json",
-    Store: "maidenform_store_view",
+    Store: "default",
   };
 
   let response;

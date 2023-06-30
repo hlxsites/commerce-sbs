@@ -1,27 +1,30 @@
-import XLSX from 'xlsx';
-import fs from 'fs';
-import he from 'he';
-import getAllProducts from './queries/products.graphql.js';
+import XLSX from "xlsx";
+import fs from "fs";
+import he from "he";
+import getAllProducts from "./queries/products.graphql.js";
 
-const endpoint = 'https://franklin.maidenform.com/graphql';
+const endpoint = "https://franklin.maidenform.com/graphql";
 
 const prodMetadata = [];
 const createSheet = async () => {
   const data = [
-    ['URL', 'keywords', 'title', 'og:title' , 'description' , 'og:description'],
+    ["URL", "keywords", "title", "og:title", "description", "og:description"],
   ];
   prodMetadata.forEach((metaData) => {
-    data.push(
-      [metaData.path, metaData.meta_keyword,
-        metaData.meta_title, metaData.meta_title,
-        metaData.meta_description, metaData.meta_description],
-    );
+    data.push([
+      metaData.path,
+      metaData.meta_keyword,
+      metaData.meta_title,
+      metaData.meta_title,
+      metaData.meta_description,
+      metaData.meta_description,
+    ]);
   });
   // Write XLSX file
   const worksheet = XLSX.utils.aoa_to_sheet(data);
-  const workbook = { Sheets: { Sheet1: worksheet }, SheetNames: ['Sheet1'] };
-  const xlsx = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
-  await fs.promises.writeFile('metadata.xlsx', xlsx);
+  const workbook = { Sheets: { Sheet1: worksheet }, SheetNames: ["Sheet1"] };
+  const xlsx = XLSX.write(workbook, { bookType: "xlsx", type: "buffer" });
+  await fs.promises.writeFile("metadata.xlsx", xlsx);
 };
 
 /**
@@ -30,14 +33,17 @@ const createSheet = async () => {
  */
 const getProducts = async (pageNumber) => {
   const api = new URL(endpoint);
-  api.searchParams.append('query', getAllProducts);
-  api.searchParams.append('variables', JSON.stringify({ currentPage: pageNumber }));
+  api.searchParams.append("query", getAllProducts);
+  api.searchParams.append(
+    "variables",
+    JSON.stringify({ currentPage: pageNumber })
+  );
 
   const response = await fetch(api, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      store: 'maidenform_store_view',
+      "Content-Type": "application/json",
+      store: "default",
     },
   });
   const result = await response.json();
@@ -47,12 +53,15 @@ const getProducts = async (pageNumber) => {
       const baseImageUrl = `https://franklin.maidenform.com/product-images/${item.sku}.jpg`;
       const itemMeta = {
         path: `/products/${item.url_key}/${item.sku}`,
-        meta_keyword: (item.meta_keyword !== null) ? item.meta_keyword : '',
-        meta_title: he.decode((item.meta_title !== null) ? item.meta_title : item.name),
-        meta_description: (item.meta_description !== null) ? item.meta_description : '',
-        'og:image': baseImageUrl,
-        'og:image:secure_url': baseImageUrl,
-        'twitter:image': baseImageUrl,
+        meta_keyword: item.meta_keyword !== null ? item.meta_keyword : "",
+        meta_title: he.decode(
+          item.meta_title !== null ? item.meta_title : item.name
+        ),
+        meta_description:
+          item.meta_description !== null ? item.meta_description : "",
+        "og:image": baseImageUrl,
+        "og:image:secure_url": baseImageUrl,
+        "twitter:image": baseImageUrl,
       };
       prodMetadata.push(itemMeta);
     });
